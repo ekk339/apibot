@@ -3,27 +3,27 @@
 $method = $_SERVER['REQUEST_METHOD'];
 
 // Process only when method is POST
-if(isset($method) && $method == 'POST'){
+if($method == 'POST'){
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 
 	$text = $json->result->parameters->text;
 
 	switch ($text) {
-		case 'ส':
+		case 'hi':
 			$speech = "Hi, Nice to meet you";
 			break;
 
-		case 'ด':
+		case 'bye':
 			$speech = "Bye, good night";
 			break;
 
-		case 'อ':
+		case 'anything':
 			$speech = "Yes, you can type anything here.";
 			break;
 		
 		default:
-			$speech = $text;
+			$speech = "Sorry, I didnt get that. Please ask me something else.";
 			break;
 	}
 
